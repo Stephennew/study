@@ -1,0 +1,47 @@
+	<?require 'html/top.html';?>
+		<section>
+			<?require 'html/nav.html';?>
+			<div class="mainbox">
+				<div class="note">
+					<h4>添加分类</h4>
+					<form action="category.php?act=category_add_save" method="post">
+						<table class="news_form">
+							<tr>
+								<td>分类名称：</td>
+								<td><input type="text" name="name" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>分类内容：</td>
+								<td>
+									<textarea style="margin: 0px;width: 550px;height: 317px;" name="content"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>是否显示:</td>
+								<td><input type="checkbox" value="1" name="is_show" /></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="提交"/></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

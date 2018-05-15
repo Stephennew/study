@@ -1,0 +1,70 @@
+	<?require 'html/top.html'?>
+		<section>
+			<?require 'html/nav.html'?>
+			<div class="mainbox">
+				<div class="note">
+					<h4>管理员列表</h4>
+					<form method="post" action="" class="search_form">
+						<input type="text" name="keywords" placeholder="请输入要搜索的关键词"/>
+						<input type="submit" value="搜索"/>
+					</form>
+					<table class="news_list">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>用户名</th>
+								<th>昵称</th>
+								<th>所属组</th>
+								<th>用户创建时间</th>
+								<th>最后登录时间</th>
+								<th>最近登录IP</th>
+								<th>EMAIL</th>
+								<th>操作</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<?foreach ($rows as $v):?>
+							<tr>
+								<td><?=$v['id']?></td>
+								<td><?=$v['username']?></td>
+								<td><?=$v['nickname']?></td>
+								<td><?=$arr[$v['to_id']]?></td>
+								<td><?=date('Y-m-d,H:i:s',$v['create_time'])?></td>
+								<td><?=$v['last_time']==0?'未登录':date('Y-m-d,H:i:s',$v['last_time'])?></td>
+								<td><?=$v['remote_addr']==0?'未登录':$v['remote_addr']?></td>
+								<td><?=$v['email']?></td>
+								<td>
+									<a href="?act=manager_edit&id=<?=$v['id']?>">修改</a> /
+									<a href="?act=manager_del&id=<?=$v['id']?>">删除</a>
+								</td>
+							</tr>
+							<?endforeach;?>
+						</tbody>
+					</table>
+					<div class="page">
+						<a href="#">1</a>
+						<a href="#">2</a>
+						<a href="#" class="on">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

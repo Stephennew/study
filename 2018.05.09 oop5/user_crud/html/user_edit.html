@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>edit</title>
+</head>
+<body>
+	<form action="?act=edit_save" method="post">
+		 <input type="hidden" name="id" value="<?=$id?>">
+		用户名:<input type="text" name="username" value="<?=$row['username']?>"><br>
+		密码:<input type="text" name="password" value="<?=$row['password']?>"><br>
+		邮箱:<input type="text" name="email" value="<?=$row['email']?>"><br>
+		状态:<input type="text" name="status" value="<?=$row['status']?>"><br>
+		<input type="submit" name="" value="确认修改">
+	</form>
+</body>
+</html>

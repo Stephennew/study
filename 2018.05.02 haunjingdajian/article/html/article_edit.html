@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>edit</title>
+</head>
+<body>
+	<form action="article.php?act=edit_save" method="post">
+		<input type="hidden" name="id" value="<?=$id?>">
+		标题:<input type="text" name="title" value="<?=$row['title']?>"><br/>
+		内容:<textarea name="intro" width="100px" height="150px"><?=$row['intro']?></textarea><br/>
+		作者id:<input type="text" name="user_id" value="<?=$row['user_id']?>"><br/>
+		状态:<input type="text" name="status" value="<?=$row['status']?>"><br>
+		<input type="submit" name="" value="确认修改">
+	</form>
+</body>
+</html>

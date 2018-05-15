@@ -1,0 +1,62 @@
+	<?require 'top.html' ?>
+		<section>
+			<?require 'nav.html'?>
+			<div class="mainbox">
+				<div class="note">
+					<h4>管理员修改</h4>
+					<form action="?act=manager_edit_save" method="post">
+						<table class="news_form">
+							<tr>
+								<td><input type="hidden" name="id" value="<?=$id?>"></td>
+							</tr>
+							<tr>
+								<td>管理员名称：</td>
+								<td><input type="text" name="username" class="inbox" value="<?=$row['username']?>" /></td>
+							</tr>
+							<tr>
+								<td>管理员分类：</td>
+								<td>
+									<select class="inbox" name="to_id">
+										<?foreach($rows as $v):?>
+										<option value="<?=$v['id']?>" <?=$v['id']==$row['to_id']?'selected=selected':''?>><?=$v['group_name']?></option>
+										<?endforeach;?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>密       码：</td>
+								<td><input type="text" name="pwd" class="inbox" value="<?=$row['pwd']?>" /></td>
+							</tr>
+							<tr>
+								<td>Email：</td>
+								<td><input type="text" name="email" class="inbox" value="<?=$row['email']?>" /></td>
+							</tr>
+							<tr>
+								<td>管理员昵称：</td>
+								<td><input type="text" name="nickname" class="inbox" value="<?=$row['nickname']?>" /></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="提交"/></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

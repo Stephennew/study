@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <style>
+        table{
+            border-collapse: collapse;
+
+        }
+        th,td{
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>邮箱</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            <?foreach ($rows as $row):?>
+            <tr>
+                <td><?=$row['id']?></td>
+                <td><?=$row['username']?></td>
+                <td><?=$row['password']?></td>
+                <td><?=$row['email']?></td>
+                <td><?=$row['status']?'已审核':未审核?></td>
+                <td>
+                    <a href="?a=add">添加</a>
+                    <a href="?a=del&id=<?=$row['id']?>">删除</a>
+                    <a href="?a=edit&id=<?=$row['id']?>">修改</a>
+                </td>
+            </tr>
+            <?endforeach;?>
+        </table>
+
+    </form>
+</body>
+</html>

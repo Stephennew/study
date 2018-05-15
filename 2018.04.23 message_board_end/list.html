@@ -1,0 +1,109 @@
+<?php 
+//header('Content-Type: text/html;charset=utf-8');
+	
+/*
+创建数据库
+
+创建表
+create table(
+	id int 
+);
+
+添加数据
+
+*/
+
+
+/*
+	回复内容
+*/
+/*$sql1 = "select * from reply where id={$row['id']} order by id desc";
+$result1=mysqli_query($link,$sql1);
+if($result1 === false){
+	echo '错误sql:',$sql,'<br>','错误信息:',mysqli_error($link);
+}
+$rows1=mysqli_fetch_all($result1,1);*/
+//6关闭连接
+ ?>
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 	<title></title>
+ 	<style type="text/css">
+ 		table{
+ 			border-collapse:1px solid red;
+ 		}
+ 		h2{
+ 			color: red;
+ 		}
+ 		img{
+ 			width: 30px;
+ 			height: 30px;
+ 		}
+ 	</style>
+ </head>
+ <body>
+ 	<div style="text-align: right;">
+ 		<?if(isset($_SESSION['userinfo'])):?>
+ 		<a href="login.php?act=logout">安全退出</a>
+ 		<?elseif(!isset($_SESSION['userinfo'])):?>
+ 		<a href="login.php?act=login">登录</a>
+ 		<?endif;?>
+ 	</div>
+ 	<div>
+ 		<h2>欢迎_<?=$_SESSION['userinfo']['username']??'游客'?>_来到我的留言板</h2>
+ 	</div>
+ 	<form action="condition.php?act=add_save" method="post" enctype="multipart/form-data">
+    用户名: <input type="text" name="name" value="<?=$_SESSION['userinfo']['nickname']??''?>"><br><br>
+    留言 :
+    <textarea name="content" id="" cols="100" rows="10"></textarea>
+    <br>
+    <p>头像:<input type="file" name="icon"></p>
+    <input type="submit" value="马上留言"><br>
+</form>
+ 	<table>
+ 	<hr>
+	<?foreach($rows as $row):?>
+	<?$add_date = date('Y-m-d H:i:s',$row['date']);?>
+	<?
+
+		if($row['jubao']>0){
+			echo '您的评论正在审核中!','<br>';
+		}else{
+		
+
+	?>
+
+	<p><span><img src="<?=$row['icon']?>"></span><?=$row['id']?>#<?=$row['name']?>于<?=$add_date?>说:</p>
+	<p>	<?=$row['content']?>
+		<a href="condition.php?act=del&id=<?=$row['id']?>">删除</a>
+		<a href="condition.php?act=edit&id=<?=$row['id']?>">修改</a>
+		<a href="condition.php?act=is_top&id=<?=$row['id']?>&is_top=<?=$row['is_top']?>"><?=$row['is_top']?'取消置顶':'置顶'?></a>
+		<a href="condition.php?act=zan&id=<?=$row['id']?>&zan=<?=$row['zan']?>">赞(<?=$row['zan']?>)</a>
+		<a href="condition.php?act=report&id=<?=$row['id']?>">举报</a>
+		<a href="condition.php?act=reply_huixian&id=<?=$row['id']?>">回复</a>
+
+		<!-- reply start -->
+		<?foreach($row['reply'] as $v):?>
+			
+		<?$reply_time = date('Y-m-d H:i:s',$v['create_time']);?>
+		<p style="border:1px solid red;width: 700px"><?=$v['name']?>在<?=$reply_time?>回复:<?=$v['reply_content']?></p>
+		<?endforeach;?>
+		<!-- reply end -->
+	</p>
+	<?}?>
+	<?endforeach;?>
+		<div>
+			<a href="condition.php?act=list&page=<?=$pageone?>">首页</a>
+			<a href="condition.php?act=list&page=<?=$prv?>">上一页</a>
+			<?for($i=$startpage;$i<=$endpage;$i++):?>
+			<a href="condition.php?act=list&page=<?=$i?>">&nbsp;<?=$i?>&nbsp;</a>
+			<?endfor;?>
+			<a href="condition.php?act=list&page=<?=$next?>">下一页</a>
+			<a href="condition.php?act=list&page=<?=$total_page?>">尾页</a>
+		</div>
+ 	</table>
+
+ 	
+ </body>
+ </html>

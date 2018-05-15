@@ -1,0 +1,68 @@
+	<?require 'html/top.html';?>
+		<section>
+			<?require 'html/nav.html';?>
+			<div class="mainbox">
+				<div class="note">
+					<h4>文章列表</h4>
+					<form method="get" action="" class="search_form">
+						<input type="hidden" name="act" value="article_list">
+						<input type="text" name="keywords" placeholder="请输入要搜索的关键词" value="<?=$keywords??''?>" />
+						<input type="submit" value="搜索"/>
+					</form>
+					<table class="news_list">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>标题</th>
+								<th>内容</th>
+								<th>分类名称</th>
+								<th>添加时间</th>
+								<th>点击量</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?foreach($rows as $val):?>
+							<tr>
+								<td><?=$val['id']?></td>
+								<td><?=$val['title']?></td>
+								<td><?=mb_substr($val['content'],0,20)?></td>
+								<td><?=$arr[$val['category_id']]??''?></td>
+								<td><?=date('Y-m-d,H:i:s',$val['intime'])?></td>
+								<td><?=$val['hit']?></td>
+								<td>
+									<a href="?act=article_edit&id=<?=$val['id']?>">修改</a> /
+									<a href="?act=article_del&id=<?=$val['id']?>">删除</a>
+								</td>
+							</tr>
+							<?endforeach;?>
+						</tbody>
+					</table>
+					<div class="page">
+						<a href="article.php?act=article_list&page=<?=$pageone?>&keywords=<?=$keywords?>">首页</a>
+						<a href="article.php?act=article_list&page=<?=$prv?>&keywords=<?=$keywords?>">上一页</a>
+						<?for($i=$startpage;$i<=$endpage;$i++):?>
+						<a href="article.php?act=article_list&page=<?=$i?>&keywords=<?=$keywords?>" ><?=$i?></a>
+						<?endfor;?>
+						<a href="article.php?act=article_list&page=<?=$next?>&keywords=<?=$keywords?>">下一页</a>
+						<a href="article.php?act=article_list&page=<?=$total_page?>&keywords=<?=$keywords?>">尾页</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

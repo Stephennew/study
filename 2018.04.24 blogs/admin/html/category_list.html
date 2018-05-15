@@ -1,0 +1,56 @@
+﻿		<? require 'html/top.html';?>
+		<section>
+			<?php require 'html/nav.html';?>
+			<div class="mainbox">
+
+				
+				<div class="note">
+					<h4>分类列表</h4>
+
+					<table class="news_list">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>名字</th>
+								<th>描述</th>
+								<th>是否显示</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($list as $val):?>
+							<tr>
+								<td><?=$val['id']?></td>
+								<td><?=$val['name']?></td>
+								<td><?=$val['content']?></td>
+								<td><?=$val['is_show']==0?'否':'是'?></td>
+								<td>
+									<a href="category.php?act=category_edit&id=<?=$val['id']?>">修改</a>
+									<a href="category.php?act=category_del&id=<?=$val['id']?>">删除</a>
+								</td>
+							</tr>
+							<?php endforeach;?>
+						</tbody>
+					</table>
+
+				</div>
+				
+
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

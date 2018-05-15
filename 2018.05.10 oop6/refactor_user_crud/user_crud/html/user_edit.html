@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="?a=edit_save" method="post">
+        <input type="hidden" value="<?=$row['id']?>" name="id">
+        用户名: <input name="username" value="<?=$row['username']?>"></input><br>
+        密码: <input type="text" name="password" value="<?=$row['password']?>"><br>
+        邮箱: <input type="text" name="email" value="<?=$row['email']?>"><br>
+        状态: <input type="radio" name="status" value="<?=$row['status']?>" <?=$row['status']?'checked=checked':''?>><br>
+        <input type="submit" value="确认修改">
+    </form>
+</body>
+</html>

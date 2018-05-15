@@ -1,0 +1,73 @@
+	<?require 'html/top.html'?>
+		<section>
+			<?require 'html/nav.html'?>
+			<div class="mainbox">
+
+				
+				<div class="note">
+					<h4>新闻列表</h4>
+					<form method="post" action="" class="search_form">
+						<input type="text" name="keywords" placeholder="请输入要搜索的关键词"/>
+						<input type="submit" value="搜索"/>
+					</form>
+					<table class="news_list">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>姓名</th>
+								<th>年龄</th>
+								<th>性别</th>
+								<th>头像</th>
+								<th>部门</th>
+								<th>爱好</th>
+								<th>简介</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?foreach ($rows as $v):?>
+							<tr>
+								<td><?=$v['id']?></td>
+								<td><?=$v['name']?></td>
+								<td><?=$v['age']?></td>
+								<td><?=$v['sex']?></td>
+								<td><img src="<?=$v['icon']?>" height="30px"/></td>
+								<td><?=$arr[$v['bumen_id']]?></td>
+								<td><?=$v['hobby']?></td>
+								<td><?=$v['text']?></td>
+
+								<td>
+									<a href="yuangong.php?act=yuangong_edit&id=<?=$v['id']?>">修改</a> /
+									<a href="yuangong.php?act=yuangong_del&id=<?=$v['id']?>">删除</a>
+								</td>
+							</tr>
+							<?endforeach;?>
+						</tbody>
+					</table>
+					<div class="page">
+						<a href="#">1</a>
+						<a href="#">2</a>
+						<a href="#" class="on">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

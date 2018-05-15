@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<ul>
+		<?foreach($rows as $row):?>
+		<li><?=$row[0]?><a href="zuoye3.php?table_name=<?=$row['0']?>">查看数据</a></li>
+		<?endforeach;?>
+	</ul>
+</body>
+</html>

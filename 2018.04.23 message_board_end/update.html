@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>update</title>
+</head>
+<body>
+
+	<form action="condition.php?act=edit_save" method="post">
+		<input type="hidden" name="id" value="<?=$id?>">
+		用户名:<input type="text" name="name" value="<?=$row['name']??''?>"><br>
+		内容:<textarea cols="65" rows="20" name="content"><?=$row['content']??''?></textarea><br>
+		<input type="submit" name="" value="确认修改">
+	</form>
+</body>
+</html>

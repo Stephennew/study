@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>list</title>
+	<style type="text/css">
+		table{
+			border-collapse: collapse;
+		}
+		td,th{
+			border:1px solid #66cc66;
+		}
+	</style>
+</head>
+<body>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>标题</th>
+				<th>内容</th>
+				<th>分类</th>
+				<th>发布时间</th>
+				<th>点击量</th>
+				<th>操作</th>
+			</tr>
+			<?foreach($rows as $row):?>
+				<tr>	
+					<td><?=$row['id']?></td>
+					<td><?=$row['title']?></td>
+					<td><?=$row['content']?></td>
+					<td><?=$arr[$row['category_id']]?></td>
+					<td><?=date('Y-m-d H:i:s',$row['intime'])?></td>
+					<td><?=$row['hit']?></td>
+					<td>
+						<a href="article.php?act=add">添加</a>
+						<a href="article.php?act=edit&id=<?=$row['id']?>">修改</a>
+						<a href="article.php?act=del&id=<?=$row['id']?>">删除</a>
+					</td>
+				</tr>
+			<?endforeach;?>
+		</table>
+	</form>
+</body>
+</html>

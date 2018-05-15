@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>add</title>
+</head>
+<body>
+	<form action="article.php?act=add_save" method="post">
+		文章标题:<input type="text" name="title"><br>
+		文章内容:<textarea height="150px" width="200px" name="content"></textarea><br>
+		文章分类:<select name="category_id">
+			<?foreach($cates as $cate):?>
+			<option value="<?=$cate['id']?>"><?=$cate['name']?></option>
+			<?endforeach;?>
+		</select><br>
+		<input type="submit" name="" value="确认添加">
+	</form>
+</body>
+</html>

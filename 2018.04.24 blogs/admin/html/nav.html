@@ -1,0 +1,36 @@
+			<nav>
+				<h3>欢迎您来到管理后台</h3>
+				<p>登陆名：<strong><?=$_SESSION['userinfo']['username']?></strong><br/>身　份：<strong><?=$_SESSION['userinfo']['manager_group']['group_name']?></strong></p>
+				<dl>
+					<dt><span class="icon board"></span>单页管理</dt>
+					<dd>
+						<a href="#">-&emsp;新增单页</a>
+						<a href="#">-&emsp;单页列表</a>
+					</dd>
+					<dt><span class="icon news"></span>文章分类管理</dt>
+					<dd>
+						<a href="category.php?act=category_add">-&emsp;发布分类</a>
+						<a href="category.php?act=category_list">-&emsp;分类列表</a>
+						
+					</dd>
+					<dt><span class="icon pro"></span>文章管理</dt>
+					<dd>
+						<a href="article.php?act=article_add">-&emsp;新增文章</a>
+						<a href="article.php?act=article_list">-&emsp;文章列表</a>
+					</dd>
+					<dt><span class="icon book"></span>留言管理</dt>
+					<dd>
+						<a href="#">-&emsp;留言列表</a>
+					</dd>
+					<dt><span class="icon flink"></span>友情连接管理</dt>
+					<dd>
+						<a href="#">-&emsp;新增连接</a>
+						<a href="#">-&emsp;连接列表</a>
+					</dd>
+					<dt><span class="icon admin"></span>管理员管理</dt>
+					<dd>
+						<a href="manager.php?act=manager_add">-&emsp;新增管理员</a>
+						<a href="manager.php?act=manager_list">-&emsp;管理员列表</a>
+					</dd>
+				</dl>
+			</nav>

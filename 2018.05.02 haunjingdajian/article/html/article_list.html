@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lsit</title>
+	<style type="text/css">
+		table{
+			border-collapse: collapse;
+		}
+		th,td{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<table>
+			<th>文章ID</th>
+			<th>标题</th>
+			<th>正文</th>
+			<th>用户ID</th>
+			<th>状态</th>
+			<th>操作</th>
+			<?foreach($rows as $row):?>
+			<tr>
+				<td><?=$row['art_id']?></td>
+				<td><?=$row['title']?></td>
+				<td><?=$row['intro']?></td>
+				<td><?=$row['user_id']?></td>
+				<td><?=$row['status']?'已审核':'未审核'?></td>
+				<td>
+					<a href="article.php?act=edit&id=<?=$row['art_id']?>">修改</a>
+					<a href="article.php?act=del&id=<?=$row['art_id']?>">删除</a>
+					<a href="article.php?act=add">添加</a>
+				</td>
+			</tr>
+			<?endforeach;?>
+		</table>
+	</form>
+</body>
+</html>

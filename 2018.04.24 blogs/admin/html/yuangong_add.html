@@ -1,0 +1,78 @@
+	<?require 'html/top.html'?>
+		<section>
+			<?require 'html/nav.html'?>
+			<div class="mainbox">			
+				<div class="note">
+					<h4>添加员工信息</h4>
+					<form action="yuangong.php?act=yuangong_add_save" method="post" enctype="multipart/form-data">
+						<table class="news_form">
+							<tr>
+								<td>员工部门：</td>
+								<td>
+									<select class="inbox" name="bumen">
+										<?foreach ($rowss as $v):?>
+										<option value="<?=$v['id']?>"><?=$v['bumen']?></option>
+										<?endforeach;?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>姓      名：</td>
+								<td><input type="text" name="name" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>年       龄：</td>
+								<td><input type="text" name="age" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>性       别：</td>
+								<td>
+									<label>男:<input type="radio" name="sex" value="0" /></label>
+									<label>女:<input type="radio" name="sex" value="1" /></label>
+									<label>保密:<input type="radio" name="sex"  value="2" /></label>
+								</td>
+
+							</tr>
+							<tr>
+								<td>头       像：</td>
+								<td><input type="file" name="icon" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>爱       好：</td>
+								<td>
+									<label>篮球:<input type="checkbox" name="hobby[]" value="篮球" /></label>
+									<label>足球:<input type="checkbox" name="hobby[]" value="足球" /></label>
+									<label>羽毛球:<input type="checkbox" name="hobby[]" value="羽毛球" /></label>
+									<label>乒乓球:<input type="checkbox" name="hobby[]" value="乒乓球" /></label>
+
+								</td>
+							</tr>
+							<tr>
+								<td>简       介：</td>
+								<td><input type="text" name="text" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="提交"/></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

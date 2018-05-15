@@ -1,0 +1,59 @@
+	<?require 'html/top.html'?>
+		<section>
+			<?require 'html/nav.html'?>
+			<div class="mainbox">	
+				<div class="note">
+					<h4>新增管理员</h4>
+					<form action="manager.php?act=manager_add_save" method="post">
+						<table class="news_form">
+							<tr>
+								<td>管理员名称：</td>
+								<td><input type="text" name="username" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>管理员分类：</td>
+								<td>
+									<select class="inbox" name="to_id">
+										<?foreach($rows as $v):?>
+										<option value="<?=$v['id']?>"><?=$v['group_name']?></option>
+										<?endforeach;?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>密      码:</td>
+								<td><input type="text" name="pwd" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>Email：</td>
+								<td><input type="text" name="email" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td>管理员昵称：</td>
+								<td><input type="text" name="nickname" class="inbox"/></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="提交"/></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

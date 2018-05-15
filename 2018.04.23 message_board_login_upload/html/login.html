@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        body{
+            background: #99CCFF;
+        }
+        div{
+            margin:100px auto;
+            background: #f9f9e9;
+            width:400px;
+            padding:10px;
+            border-radius: 5px;
+        }
+        td{
+            padding:20px;
+            text-align: center;
+        }
+        .rig1{
+        	margin-right:100px; 
+        }
+        .ss{
+        	align-items: flex-start;
+		    text-align: center;
+		    cursor: default;
+		    color: buttontext;
+		    background-color: buttonface;
+		    box-sizing: border-box;
+		    padding: 2px 6px 3px;
+		    border-width: 2px;
+		    border-style: outset;
+		    border-color: buttonface;
+		    border-image: initial;
+		    text-decoration: underline;
+		    text-rendering: auto;
+		    color: initial;
+		    letter-spacing: normal;
+		    word-spacing: normal;
+		    text-transform: none;
+		    text-indent: 0px;
+		    text-shadow: none;
+		    display: inline-block;
+		    text-align: start;
+		    margin: 0em;
+		    font: 13.3333px Arial;
+		    border-collapse: separate;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="condition.php?act=login_access" method="post">
+            <table>
+                <tr>
+                    <td>用户名:</td>
+                    <td>
+                        <input type="text" name="username">
+                    </td>
+                </tr>
+                <tr>
+                    <td>密 码:</td>
+                    <td>
+                        <input type="password" name="pwd">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="rig1" type="submit" name="login" value="登录">
+                        <a class=ss href="condition.php?act=sign_in">注册</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

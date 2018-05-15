@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>list</title>
+	<style type="text/css">
+		table{
+			border-collapse: collapse;
+		}
+		th,td{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>邮箱</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+			<?foreach($res as $row):?>
+			<tr>
+				<td><?=$row['id']?></td>
+				<td><?=$row['username']?></td>
+				<td><?=$row['email']?></td>
+				<td><?=$row['status']?'已审核':'未审核'?></td>
+				<td>
+					<a href="?act=add">添加</a>
+					<a href="?act=del&id=<?=$row['id']?>">删除</a>
+					<a href="?act=edit&id=<?=$row['id']?>">更新</a>
+				</td>
+			</tr>
+			<?endforeach;?>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+	<?require 'html/top.html'?>
+		<section>
+			<?require 'html/nav.html'?>
+			<div class="mainbox">
+				<div class="note">
+					<h4>修改员工信息</h4>
+					<form action="?act=yuangong_edit_save" method="post">
+						<table class="news_form">
+							<tr>
+								<td>
+									<input type="hidden" name="id" value="<?=$id?>">
+								</td>
+							</tr>
+							<tr>
+								<td>员工部门：</td>
+								<td>
+									<select class="inbox" name="bumen">
+										<?foreach($rowss as $v):?>
+										<option value="<?=$v['id']?>" <?=$v['id']==$row['bumen_id']?'selected=selected':''?>><?=$v['bumen']?></option>
+										<?endforeach;?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>姓      名：</td>
+								<td><input type="text" name="name" class="inbox" value="<?=$row['name']?>" /></td>
+							</tr>
+							<tr>
+								<td>年       龄：</td>
+								<td><input type="text" name="age" class="inbox" value="<?=$row['age']?>" /></td>
+							</tr>
+							<tr>
+								<td>性       别：</td>
+								<td>
+									<label>男:<input type="radio" name="sex" value="0" <?=$row['sex']==0?'checked=checked':''?>/></label>
+									<label>女:<input type="radio" name="sex" value="1" <?=$row['sex']==1?'checked=checked':''?>/></label>
+									<label>保密:<input type="radio" name="sex"  value="2" <?=$row['sex']==2?'checked=checked':''?>/></label>
+
+								</td>
+
+							</tr>
+							<tr>
+								<td>爱       好：</td>
+								<td>
+									<label>篮球:<input type="checkbox" name="hobby[]" value="篮球" <?=$hobby1['0']=='篮球'?'checked=checked':''?>/></label>
+									<label>足球:<input type="checkbox" name="hobby[]" value="足球" <?=$hobby1['1']=='足球'?'checked=checked':''?>/></label>
+									<label>羽毛球:<input type="checkbox" name="hobby[]" value="羽毛球" <?=$hobby1['2']??''=='篮球'?'checked=checked':''?>/></label>
+									<label>乒乓球:<input type="checkbox" name="hobby[]" value="乒乓球" <?=$hobby1['3']??''=='篮球'?'checked=checked':''?>/></label>
+
+								</td>
+							</tr>
+							<tr>
+								<td>简       介：</td>
+								<td><input type="text" name="text" class="inbox"/><?=$row['text']??''?></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" value="提交"/></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</section>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
